@@ -5,7 +5,7 @@ find_package(CURL REQUIRED)
 find_package(spdlog REQUIRED)
 
 # ==== Libraries ====
-add_library(ouster_client src/client.cpp src/types.cpp src/netcompat.cpp src/lidar_scan.cpp
+add_library(ouster_client STATIC src/client.cpp src/types.cpp src/netcompat.cpp src/lidar_scan.cpp
   src/image_processing.cpp src/buffered_udp_source.cpp src/parsing.cpp
   src/sensor_http.cpp src/sensor_http_imp.cpp src/sensor_tcp_imp.cpp src/logging.cpp
   src/profile_extension.cpp)
@@ -18,15 +18,18 @@ target_link_libraries(ouster_client
     jsoncpp_lib
     spdlog::spdlog)
 target_compile_definitions(ouster_client PRIVATE EIGEN_MPL2_ONLY)
+target_compile_definitions(ouster_client PUBLIC
+  $<$<CXX_COMPILER_ID:MSVC>:_USE_MATH_DEFINES NOMINMAX>
+)
 add_library(OusterSDK::ouster_client ALIAS ouster_client)
 
 # If ouster_client is built as >=c++17, the nonstd::optional backport
 # will just be an alias for std::optional. In that case, client code
 # must also build as c++17 to use the same implementation of optional
-get_target_property(OUSTER_CLIENT_CXX_STANDARD ouster_client CXX_STANDARD)
-if(OUSTER_CLIENT_CXX_STANDARD GREATER_EQUAL 17)
-  target_compile_features(ouster_client INTERFACE cxx_std_17)
-endif()
+# get_target_property(OUSTER_CLIENT_CXX_STANDARD ouster_client CXX_STANDARD)
+# if(OUSTER_CLIENT_CXX_STANDARD GREATER_EQUAL 17)
+#   target_compile_features(ouster_client INTERFACE cxx_std_17)
+# endif()
 
 if(WIN32)
   target_link_libraries(ouster_client PUBLIC ws2_32)
