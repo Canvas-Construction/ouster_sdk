@@ -21,6 +21,12 @@
 
 #include "nonstd/optional.hpp"
 
+#ifdef WIN32
+#  undef BAUD_9600
+#  undef BAUD_115200
+#  undef VOID
+#endif
+
 namespace ouster {
 
 using nonstd::optional;
