@@ -82,27 +82,27 @@ if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME AND BUILD_TESTING)
 endif()
 
 # ==== Packaging ====
-set(CPACK_PACKAGE_CONTACT "oss@ouster.io")
-set(CPACK_PACKAGE_VENDOR "Ouster")
-set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "Ouster sensor SDK")
-set(CPACK_PACKAGE_VERSION ${PROJECT_VERSION})
-set(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_CURRENT_SOURCE_DIR}/LICENSE")
-set(CPACK_RESOURCE_FILE_README "${CMAKE_CURRENT_SOURCE_DIR}/README.rst")
-set(CPACK_PACKAGING_INSTALL_PREFIX "/opt/ouster")
-set(CPACK_SYSTEM_NAME ${CMAKE_SYSTEM_PROCESSOR})
-set(CPACK_PACKAGE_NAME ouster_sdk)
-set(CPACK_GENERATOR "DEB;TGZ")
+# set(CPACK_PACKAGE_CONTACT "oss@ouster.io")
+# set(CPACK_PACKAGE_VENDOR "Ouster")
+# set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "Ouster sensor SDK")
+# set(CPACK_PACKAGE_VERSION ${PROJECT_VERSION})
+# set(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_CURRENT_SOURCE_DIR}/LICENSE")
+# set(CPACK_RESOURCE_FILE_README "${CMAKE_CURRENT_SOURCE_DIR}/README.rst")
+# set(CPACK_PACKAGING_INSTALL_PREFIX "/opt/ouster")
+# set(CPACK_SYSTEM_NAME ${CMAKE_SYSTEM_PROCESSOR})
+# set(CPACK_PACKAGE_NAME ouster_sdk)
+# set(CPACK_GENERATOR "DEB;TGZ")
 
-# source packages
-set(CPACK_SOURCE_GENERATOR "TGZ;ZIP")
-set(CPACK_SOURCE_IGNORE_FILES /.git /dist)
+# # source packages
+# set(CPACK_SOURCE_GENERATOR "TGZ;ZIP")
+# set(CPACK_SOURCE_IGNORE_FILES /.git /dist)
 
-# deb options
-set(CPACK_DEBIAN_PACKAGE_NAME ouster-sdk)
-set(CPACK_DEBIAN_FILE_NAME DEB-DEFAULT)
-set(CPACK_DEBIAN_PACKAGE_DEPENDS
-  "libjsoncpp-dev, libeigen3-dev, libtins-dev, libglfw3-dev, libglew-dev, libspdlog-dev, libpng-dev, libflatbuffers-dev")
-include(CPack)
+# # deb options
+# set(CPACK_DEBIAN_PACKAGE_NAME ouster-sdk)
+# set(CPACK_DEBIAN_FILE_NAME DEB-DEFAULT)
+# set(CPACK_DEBIAN_PACKAGE_DEPENDS
+#   "libjsoncpp-dev, libeigen3-dev, libtins-dev, libglfw3-dev, libglew-dev, libspdlog-dev, libpng-dev, libflatbuffers-dev")
+# include(CPack)
 
 # ==== Install ====
 include(CMakePackageConfigHelpers)
